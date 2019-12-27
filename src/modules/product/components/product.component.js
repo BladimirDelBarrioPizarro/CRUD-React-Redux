@@ -1,6 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch,useSelector} from 'react-redux';
+import {loadProductsAction} from '../actions/product.actions';
 
 const Product = () => {
+    
+    const dispatch = useDispatch();
+    const loadProducts = () => dispatch(loadProductsAction());
+    useEffect( () => {
+        loadProducts()
+    },[]);  
+
+  
+
+
+    
+    const loading = useSelector((state) => state.products.loading)
+    
+
     return(
         <React.Fragment>
             <h2 className="text-center my-5">List Products</h2>
@@ -17,6 +33,7 @@ const Product = () => {
 
                 </tbody>
             </table>
+            {loading ? 'Load ...':null}
 </React.Fragment>
     );
 }

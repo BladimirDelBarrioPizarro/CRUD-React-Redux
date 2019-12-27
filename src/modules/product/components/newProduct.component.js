@@ -1,13 +1,16 @@
 import React,{useState} from 'react';
 import {newProductAction} from '../actions/product.actions';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 
-const NewProduct = () => {
+const NewProduct = ({history}) => {
 
     const [name,setName] = useState('');
     const [price,setPrice] = useState('');   
     const dispatch = useDispatch();
     const addProduct = (product) => dispatch(newProductAction(product));
+    //state
+    const error = useSelector((state) => state.products.error)
+
     
     const handleNewProduct = e => {
         e.preventDefault();
@@ -15,7 +18,7 @@ const NewProduct = () => {
         if(check){
             addProduct({name,price})
         }
-       
+       history.push('/')
     }
 
 
@@ -59,7 +62,7 @@ const NewProduct = () => {
 
                             <button type="submit" className="btn btn-primary font-weight-bold text-uppercase d-block w-100">Added</button>
                         </form>
-        
+                      {error ? <div className="font-weight-bold alert alert-danger text-center my-4">All fields are required</div> : null}
                     </div>
                 </div>
             </div>
