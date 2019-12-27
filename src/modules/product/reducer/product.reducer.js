@@ -21,10 +21,11 @@ export default function form(state = initialState,action){
                 error:false
             }
         case SUCCESS_ADD_PRODUCT:
+            state.data.push(action.payload)
             return {
                 ...state,
                 error:false,
-                data:[...state.data,action.payload]
+                data:[state.data]
             }
         case FAILURE_ADD_PRODUCT:
             return {

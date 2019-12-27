@@ -29,6 +29,16 @@
       "id": 6,
       "name": "Product 6",
       "price": 6300
+    },
+    {
+      "name": "Product 7",
+      "price": "7896",
+      "id": 7
+    },
+    {
+      "name": "Product 8 ",
+      "price": "765237",
+      "id": 8
     }
   ]
 }
