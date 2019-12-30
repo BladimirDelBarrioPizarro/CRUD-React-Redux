@@ -1,40 +1,29 @@
-import React, {useEffect} from 'react';
-import {useDispatch,useSelector} from 'react-redux';
-import {loadProductsAction} from '../actions/product.actions';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-const Product = () => {
-    
-    const dispatch = useDispatch();
-    const loadProducts = () => dispatch(loadProductsAction());
-    useEffect( () => {
-        loadProducts()
-    },[]);  
-
-  
-
-
-    
-    const loading = useSelector((state) => state.products.loading)
-    
-
+const Product = ({product}) => {
+    {product.map(product=>(console.log(product.name)))}
     return(
-        <React.Fragment>
-            <h2 className="text-center my-5">List Products</h2>
-
-            <table className="table table-striped">
-                <thead className="bg-primary table-dark">
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Action</th>
-                    </tr>   
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
-            {loading ? 'Load ...':null}
-</React.Fragment>
+       
+       
+            <tbody>
+        {product.map(product=>
+       
+       <tr>          
+          <td>{product.name}</td>
+           
+          <td><span className="font-weight-bold">$ {product.price}</span></td>     
+          
+          <td className="actions">
+                <Link to={`product/${product.id}`}
+                      className="btn btn-primary mr-2"
+                      >Editar</Link>
+                <button className="btn btn-danger">Delete</button>      
+           </td> 
+        </tr>   
+        )}
+        </tbody>
+      
     );
 }
 

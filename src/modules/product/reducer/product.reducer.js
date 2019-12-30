@@ -34,6 +34,7 @@ export default function form(state = initialState,action){
             }
         case GET_PRODUCTS:
             return{
+                ...state,
                 loading:true, 
             }    
         case  GET_PRODUCTS_SUCCESS:
