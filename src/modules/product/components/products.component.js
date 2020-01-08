@@ -10,17 +10,10 @@ const Products = () => {
     useEffect( () => {
         loadProducts()
     },[]);  
-
   
-
-
-    
     const loading = useSelector((state) => state.products.loading)
     const error = useSelector((state) => state.products.error)
     const products = useSelector((state) => state.products.data)
-    
-    console.log(products)
-   
 
     return(
         <React.Fragment>

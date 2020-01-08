@@ -8,7 +8,6 @@ const NewProduct = ({history}) => {
     const [price,setPrice] = useState('');   
     const dispatch = useDispatch();
     const addProduct = (product) => dispatch(newProductAction(product));
-    //state
     const error = useSelector((state) => state.products.error)
 
     

@@ -14,3 +14,5 @@ npm install -g json-server
 ## AXIOS
 
 npm install axios
+
+## Sweet Alert

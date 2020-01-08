@@ -6,7 +6,9 @@ import {
     FAILURE_ADD_PRODUCT,
     GET_PRODUCTS,
     GET_PRODUCTS_SUCCESS,
-    GET_PRODUCTS_ERROR
+    GET_PRODUCTS_ERROR,
+    DELETE_PRODUCT_SUCCESS,
+    DELETE_PRODUCT_ERROR
 } from '../types/product.types';
 
 
@@ -61,5 +63,30 @@ export function loadProductsAction(){
             .catch(error => {
                 dispatch(loadingProductsError())
             })    
+    }
+}
+
+
+export const deleteProductsSuccess = () => ({
+       type: DELETE_PRODUCT_SUCCESS
+})
+
+export const deleteProductsError = error => ({
+    type: DELETE_PRODUCT_ERROR,
+    payload:error
+})
+
+
+export function deleteProductAction(id){
+    return (dispatch) => {
+            httpClient.delete('/products/'+id)
+            .then(res => {
+                 console.log(res)
+                 dispatch(deleteProductsSuccess())
+                 dispatch(loadProductsAction())
+              })
+             .catch(error =>
+                 dispatch(deleteProductsError(error))
+                 ) 
     }
 }

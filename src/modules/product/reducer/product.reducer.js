@@ -4,7 +4,10 @@ import {
     FAILURE_ADD_PRODUCT,
     GET_PRODUCTS,
     GET_PRODUCTS_SUCCESS,
-    GET_PRODUCTS_ERROR
+    GET_PRODUCTS_ERROR,
+    DELETE_PRODUCT,
+    DELETE_PRODUCT_SUCCESS,
+    DELETE_PRODUCT_ERROR
 } from '../types/product.types';
 
 const initialState = {
@@ -21,11 +24,10 @@ export default function form(state = initialState,action){
                 error:false
             }
         case SUCCESS_ADD_PRODUCT:
-            state.data.push(action.payload)
+            state.data[0].push(action.payload)
             return {
-                ...state,
                 error:false,
-                data:[state.data]
+                data:state.data
             }
         case FAILURE_ADD_PRODUCT:
             return {
@@ -50,7 +52,18 @@ export default function form(state = initialState,action){
                 loading:false,
                 data:[],
                 error:true
-            }                 
+            }
+        case DELETE_PRODUCT_SUCCESS:
+            state.data[0].filter(item => item.id !== action.payload)
+            return{
+                data:state.data,
+                error:false
+            }    
+        case DELETE_PRODUCT_ERROR:
+            return{
+                ...state,
+                error:true
+            }                         
         default:
             return state;
     }

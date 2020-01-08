@@ -52,3 +52,7 @@ body {
   .acciones > *{
     flex: 1;
   }
+
+  td form{
+    display: inline;
+  }
