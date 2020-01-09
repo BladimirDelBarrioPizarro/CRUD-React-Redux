@@ -78,7 +78,6 @@ export function deleteProductAction(id){
     return (dispatch) => {
             httpClient.delete(`/products/${id}`)
             .then(res => {
-                 console.log(res)
                  dispatch(deleteProductsSuccess())
                  dispatch(loadProductsAction())
               })
@@ -101,7 +100,7 @@ export function updateProductAction(id,product){
     return (dispatch) => {
        httpClient.get(`products/${id}`)
         .then(res => 
-         dispatch(updateProduct(res.data.id,product)),
+         dispatch(updateProduct(res.data.id,product))
         )
         .catch(error => {
             dispatch(updateProductError()) 
@@ -110,10 +109,15 @@ export function updateProductAction(id,product){
 }
 
  export function updateProduct(id,product){
+    const value = {
+        name : product.name,
+        price: product.price,
+        id:id
+    } 
     return (dispatch) => { 
       httpClient.put(`products/${id}`,product)
         .then(res =>
-            dispatch(updateProductSuccess(product))
+            dispatch(updateProductSuccess(value))
         )
         .catch(error => {
            dispatch(updateProductError())

@@ -7,9 +7,7 @@ const EditProduct = ({match,history}) => {
 
     const products = useSelector((state) => state.products.data)
     const {id} = match.params;
-    //console.log(id)
-    
-    //products[0].filter(item => console.log(item.id))
+   
     const result = products[0].filter(item =>  item.id == id)
 
 
@@ -37,6 +35,7 @@ const EditProduct = ({match,history}) => {
               swal("Your product has been updated!", {
                 icon: "success",
               });
+              history.push('/')
             } else {
               swal("Your product is safe!");
             }

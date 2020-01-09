@@ -24,9 +24,7 @@ export default function form(state = initialState,action){
                 error:false
             }
         case SUCCESS_ADD_PRODUCT:
-            console.log(action.payload)
             state.data[0].push(action.payload)
-            console.log(state.data)
             return {
                 error:false,
                 data:state.data
@@ -62,8 +60,9 @@ export default function form(state = initialState,action){
                 error:true
             }
         case UPDATE_PRODUCT_SUCCESS:
+            Object.assign(state.data[0], state.data[0].map(item => item.id === action.payload.id ? item = action.payload:item ))
             return{
-                ...state,
+                data:state.data,
                 error:false
             }
         case UPDATE_PRODUCT_ERROR:
