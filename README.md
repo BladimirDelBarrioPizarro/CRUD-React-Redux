@@ -16,3 +16,5 @@ npm install -g json-server
 npm install axios
 
 ## Sweet Alert
+
+npm install sweetalert --save

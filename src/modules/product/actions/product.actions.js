@@ -4,11 +4,12 @@ import {
     ADD_PRODUCT,
     SUCCESS_ADD_PRODUCT,
     FAILURE_ADD_PRODUCT,
-    GET_PRODUCTS,
     GET_PRODUCTS_SUCCESS,
     GET_PRODUCTS_ERROR,
     DELETE_PRODUCT_SUCCESS,
-    DELETE_PRODUCT_ERROR
+    DELETE_PRODUCT_ERROR,
+    UPDATE_PRODUCT_SUCCESS,
+    UPDATE_PRODUCT_ERROR
 } from '../types/product.types';
 
 
@@ -29,7 +30,7 @@ export function newProductAction(product) {
     return (dispatch) => {
         dispatch(newProductType())
         httpClient.post('/products',product)
-         .then(res => 
+         .then(res =>
             dispatch(newProductSuccess(product))
             )
          .catch(error => {
@@ -40,9 +41,6 @@ export function newProductAction(product) {
 }
 
 
-export const loadingProducts = () => ({
-    type: GET_PRODUCTS
-})
 export const loadingProductsSuccess = (products) => ({
     type:GET_PRODUCTS_SUCCESS,
     payload:products
@@ -55,7 +53,6 @@ export const loadingProductsError = () => ({
 
 export function loadProductsAction(){
     return (dispatch) => {
-        dispatch(loadingProducts()) 
           httpClient.get('/products')
             .then(res =>
                 dispatch(loadingProductsSuccess(res.data))
@@ -79,7 +76,7 @@ export const deleteProductsError = error => ({
 
 export function deleteProductAction(id){
     return (dispatch) => {
-            httpClient.delete('/products/'+id)
+            httpClient.delete(`/products/${id}`)
             .then(res => {
                  console.log(res)
                  dispatch(deleteProductsSuccess())
@@ -90,3 +87,44 @@ export function deleteProductAction(id){
                  ) 
     }
 }
+
+export const updateProductSuccess = (product) =>({
+    type: UPDATE_PRODUCT_SUCCESS,
+    payload:product 
+})
+
+export const updateProductError = () => ({
+    type: UPDATE_PRODUCT_ERROR
+})
+
+export function updateProductAction(id,product){
+    return (dispatch) => {
+       httpClient.get(`products/${id}`)
+        .then(res => 
+         dispatch(updateProduct(res.data.id,product)),
+        )
+        .catch(error => {
+            dispatch(updateProductError()) 
+        })   
+    }  
+}
+
+ export function updateProduct(id,product){
+    return (dispatch) => { 
+      httpClient.put(`products/${id}`,product)
+        .then(res =>
+            dispatch(updateProductSuccess(product))
+        )
+        .catch(error => {
+           dispatch(updateProductError())
+        })
+    }
+}
+
+
+
+
+
+
+
+

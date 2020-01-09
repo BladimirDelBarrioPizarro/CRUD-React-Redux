@@ -13,14 +13,12 @@ const Product = ({product}) => {
     const handleDelete = (e,id) => {
       e.preventDefault()
       confirmation(id)
-      //deleteProduct(id)
     }
     
     const confirmation = (id) => {
-      console.log(id)
       swal({
         title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this imaginary file!",
+        text: "Once deleted, you will not be able to recover this product!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -32,7 +30,7 @@ const Product = ({product}) => {
             icon: "success",
           });
         } else {
-          swal("Your imaginary file is safe!");
+          swal("Your product is safe!");
         }
       });
     }

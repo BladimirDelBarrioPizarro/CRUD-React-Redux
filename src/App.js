@@ -18,6 +18,7 @@ function App() {
       </div>
     </Router>
   );
+  {window.reload="/"}
 }
 
 export default App;

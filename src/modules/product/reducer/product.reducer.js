@@ -2,12 +2,12 @@ import {
     ADD_PRODUCT,
     SUCCESS_ADD_PRODUCT,
     FAILURE_ADD_PRODUCT,
-    GET_PRODUCTS,
     GET_PRODUCTS_SUCCESS,
     GET_PRODUCTS_ERROR,
-    DELETE_PRODUCT,
     DELETE_PRODUCT_SUCCESS,
-    DELETE_PRODUCT_ERROR
+    DELETE_PRODUCT_ERROR,
+    UPDATE_PRODUCT_SUCCESS,
+    UPDATE_PRODUCT_ERROR
 } from '../types/product.types';
 
 const initialState = {
@@ -24,7 +24,9 @@ export default function form(state = initialState,action){
                 error:false
             }
         case SUCCESS_ADD_PRODUCT:
+            console.log(action.payload)
             state.data[0].push(action.payload)
+            console.log(state.data)
             return {
                 error:false,
                 data:state.data
@@ -34,11 +36,6 @@ export default function form(state = initialState,action){
                 ...state,
                 error: true
             }
-        case GET_PRODUCTS:
-            return{
-                ...state,
-                loading:true, 
-            }    
         case  GET_PRODUCTS_SUCCESS:
             return{
                 ...state,
@@ -63,7 +60,17 @@ export default function form(state = initialState,action){
             return{
                 ...state,
                 error:true
-            }                         
+            }
+        case UPDATE_PRODUCT_SUCCESS:
+            return{
+                ...state,
+                error:false
+            }
+        case UPDATE_PRODUCT_ERROR:
+            return{
+                ...state,
+                error:true
+            }    
         default:
             return state;
     }

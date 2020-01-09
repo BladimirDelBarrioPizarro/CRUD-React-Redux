@@ -15,6 +15,7 @@ const Products = () => {
     const error = useSelector((state) => state.products.error)
     const products = useSelector((state) => state.products.data)
 
+
     return(
         <React.Fragment>
         {error ? <div className="font-weight-bold alert alert-danger text-center mt4">Error ...</div>:

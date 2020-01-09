@@ -2,14 +2,15 @@ import React,{useState} from 'react';
 import {newProductAction} from '../actions/product.actions';
 import {useDispatch,useSelector} from 'react-redux';
 
+
 const NewProduct = ({history}) => {
 
     const [name,setName] = useState('');
     const [price,setPrice] = useState('');   
     const dispatch = useDispatch();
-    const addProduct = (product) => dispatch(newProductAction(product));
+    const addProduct = (product) => dispatch(newProductAction(product)); 
     const error = useSelector((state) => state.products.error)
-
+    
     
     const handleNewProduct = e => {
         e.preventDefault();
