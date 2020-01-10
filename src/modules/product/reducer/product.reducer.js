@@ -24,10 +24,9 @@ export default function form(state = initialState,action){
                 error:false
             }
         case SUCCESS_ADD_PRODUCT:
-            state.data[0].push(action.payload)
             return {
                 error:false,
-                data:state.data
+                data: Object.assign(state.data,state.data[0].push(action.payload))
             }
         case FAILURE_ADD_PRODUCT:
             return {

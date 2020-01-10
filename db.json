@@ -1,11 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Product 1",
-      "price": 3400
-    },
-    {
       "name": "Product 2",
       "price": "7892",
       "id": 2
@@ -24,6 +19,31 @@
       "name": "Product 5",
       "price": "5678",
       "id": 5
+    },
+    {
+      "name": "Product 6",
+      "price": "65765",
+      "id": 6
+    },
+    {
+      "name": "Product 7 ",
+      "price": "8990890",
+      "id": 7
+    },
+    {
+      "name": "Product 8 ",
+      "price": "8978907",
+      "id": 8
+    },
+    {
+      "name": "Product 9",
+      "price": "787",
+      "id": 9
+    },
+    {
+      "name": "Product 10",
+      "price": "878",
+      "id": 10
     }
   ]
 }

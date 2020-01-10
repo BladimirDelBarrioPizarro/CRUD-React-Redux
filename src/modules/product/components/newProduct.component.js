@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {newProductAction} from '../actions/product.actions';
 import {useDispatch,useSelector} from 'react-redux';
-
+import swal from 'sweetalert'
 
 const NewProduct = ({history}) => {
 
@@ -18,7 +18,9 @@ const NewProduct = ({history}) => {
         if(check){
             addProduct({name,price})
         }
-       history.push('/')
+       swal('Your product has been inserted correctly')
+       setTimeout(function(){ history.push('/') }, 2000);
+
     }
 
 

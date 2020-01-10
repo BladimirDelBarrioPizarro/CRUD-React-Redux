@@ -17,7 +17,7 @@ const EditProduct = ({match,history}) => {
 
     const handleUpdateProduct = (e,name,price) => {
         e.preventDefault();
-        if(name.trim() === '' || price.trim() === ''){
+        if(name === '' || price === ''){
             setError(true)
         }
         else{
